@@ -1,0 +1,72 @@
+<section id="footer" class="mt-5">
+    <table class="table table-bordered" id="orders">
+        <thead>
+          <tr>
+            <th scope="col">OrdrId</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Status</th>
+            <th scope="col">ShippingStatus</th>
+            <th scope="col">payment</th>
+            <th scope="col">TotalPrice</th>
+            <th scope="col">Pincode</th>
+            <th scope="col">Options</th>
+            <th scope="col">ViewProduct</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {{#each OrderDetails}}
+            {{!-- <% OrderDetails.forEach(function(order, i){ %> --}}
+          <tr >
+        
+          
+            <td>{{this._id}}</td>
+            <td>{{ this.deliveryDetails.add1}}</td>
+            <td>{{ this.customdate }}</td>
+            <td>{{ this.deliveryDetails.phone}}</td>
+            <td>{{ this.status }}</td>
+            <td>{{ this.shippingStatus }}</td>
+            <td>{{ this.PaymentMethod}}</td>
+            <td>{{ this.TotalAmount }}</td>
+            <td>{{this.deliveryDetails.postcode}}</td>
+
+            <td>
+               {{#if return}}
+              <a href="/return-order/{{this._id}}"><button type="submit" class="badge bg-danger" style="border: none;">RETURN</button></a>
+              {{/if}}
+              {{#if btn}}
+                <form action="/orderCancel/{{this._id}}" method="post">
+
+                <input name="status" value="{{ this.status }}" hidden> 
+                
+               
+                <button type="submit" class="badge bg-danger" style="border: none;">Cancel</button>
+
+              </td>
+            </form>
+          {{/if}}
+            
+            <td>
+              <a href="/userProductView/{{this._id}}"><button type="submit" class="badge bg-success" style="font-size: 67%; border: none;">View Product</button></a>
+            </td>
+          </tr>
+         {{/each}}
+        </tbody>
+      </table>
+    </section>
+ <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+      $(document).ready(function () {
+        $('#orders').DataTable({
+            responsive: true,
+            dom: 'Pfrtip'
+        });
+      });
+  
+  
+  
+  </script>

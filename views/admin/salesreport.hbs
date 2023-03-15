@@ -1,0 +1,99 @@
+<section class="page-align" id="footer">
+    <h1>Sales Report</h1>
+    <div class="sale-filter">
+
+        <div>
+            {{#if report}}
+    <button id="download-button" class="btn btn-danger">Download As PDF</button>
+    <button type="button" class="btn btn-danger" onclick="export_data()"
+                    value="Export to excel">Download As Excel</button>
+    {{/if}}
+    </div>
+    <div class="mt-3">
+        <form action="/admin/sale-filter" method="post" onsubmit="return validateForm()">
+        <input type="date" name="startDate" id="startDate" required>
+        <input type="date" name="endDate" id="endDate" required>
+        {{!-- <button class="badge badge-secondary ml-5" type="submit">Filter</button> --}}
+        <button class="btn btn-success" type="submit">Filter</button>
+        </form>
+        </div>
+    </div>
+    {{#if report}}
+    {{#if dates}}
+    <p>Showing Results {{dates.start}} to {{dates.end}}</p>
+    {{/if}}
+    <div id="invoice">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">User</th>
+                <th scope="col">Products</th>
+                <th scope="col">Total</th>
+                <th scope="col">Payment Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each report}}
+            <tr>
+                <td id="date">{{this.customdate}}</td>
+                <td>{{this.deliveryDetails.fname}}</td>
+                <td>{{this.products.brand}}</td>
+                <td>₹{{this.TotalAmount}}</td>
+
+                <td>{{this.PaymentMethod}}</td>
+               
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+    {{else}}
+    <p class="text-center mt-5">No Records Found</p>
+    {{/if}}
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script>
+			const button = document.getElementById('download-button');
+			function generatePDF() {
+                console.log("called")
+				// Choose the element that your content will be rendered to.
+				const element = document.getElementById('invoice');
+				// Choose the element and save the PDF for your user.
+				html2pdf().from(element).save();
+			}
+			button.addEventListener('click', generatePDF);
+            
+            function export_data() {
+        let data = document.getElementById('invoice');
+        var fp = XLSX.utils.table_to_book(data, { sheet: 'wisdom' });
+        XLSX.write(fp, {
+            bookType: 'xlsx',
+            type: 'base64'
+        });
+        XLSX.writeFile(fp, 'report.xlsx');
+    }
+    
+</script>
+<script>
+  document.getElementById('endDate').addEventListener('change', function() {
+  var dateofpublish = new Date(this.value);
+  var currentDate = new Date();
+  if (dateofpublish > currentDate) {
+    alert('Please enter a date that is less than or equal to the current date.');
+    this.value = ''; // clear the input field
+  }
+});
+</script>
+<script>
+function validateForm() {
+  var startDate = document.getElementById("startDate").value;
+  var endDate = document.getElementById("endDate").value;
+  if (startDate > endDate) {
+    alert("Start date must be less than or equal to end date");
+    return false;
+  }
+  return true;
+}
+</script>

@@ -1,0 +1,49 @@
+<div class="page-align" id="footer">
+    <h1>View Product</h1>
+    <table class="table table-bordered border-primary mt-5">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th scope="col">Product</th>
+                <th scope="col">Address</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Shipping Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td class=""><img style="width: 100px; height:auto;" src="{{this.orders.image.[0]}}" alt=""></td>
+                <td>{{this.orders.brand}} {{this.orders.model}}</td>
+                <td>{{this.deliveryDetails.add1}}
+                    {{this.deliveryDetails.postcode}}
+                </td>
+                <td>{{this.products.quantity}}</td>
+                <td>₹{{this.orders.price}}</td>
+                 <td>{{this.status}}
+                    {{!-- {{#if this.btnStatus}}
+                    <form action="/admin/delivery-status" method="post">
+                    <input type="text" value="{{this.orders._id}}" name="id" hidden>
+                    <input type="text" value="{{this._id}}" name="orderid" hidden>
+                    <h6 class="badge badge-info">{{this.status}}</h6><br>
+
+                        <select class="shipping" name="status">
+                            <option value="Preparing">Order Confirmed</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                        
+                        <input class="shipping" type="submit" value="Change">
+                    </form>
+                    {{else}}
+                    <p class="badge badge-secondary">{{this.status}}</p> <br>
+                    {{/if}} --}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>

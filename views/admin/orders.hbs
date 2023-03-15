@@ -1,0 +1,92 @@
+<div class="page-align" id="footer">
+    <h1>Orders</h1>
+    {{message}}
+    <table class="table table-bordered border-primary mt-5" id="orders">
+        <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Method</th>
+                <th scope="col">Status</th>
+                <th scope="col">Options</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each OrderDetails}}
+            <tr>
+                <td>{{this.user.name}}</td>
+                <td>{{this.date}}</td>
+                <td>₹{{this.TotalAmount}}</td>
+                <td>{{this.PaymentMethod}}</td>
+                <td>{{this.status}}</td>
+                <td>
+ 
+             {{#if this.btn}}
+                <input name="status" value="{{ this.status }}" hidden>
+                <a href="/admin/shipped-order/{{this._id}}"><button class="btn btn-warning text-dark" onclick="orderShipped('{{this._id}}')"
+                >SHIPPED</button></a><br>
+              <a href="/admin/deliveredOrder/{{this._id}}"><button class="btn btn-warning text-dark mt-3" onclick="orderDelivered('{{this._id}}')"
+                >DELIVERED</button></a><br>
+              <form action="/admin/adminOrderCancel/{{this._id}}" method="post">
+                <button type="submit" class="badge bg-danger" style="border: none;">Cancel</button>
+                {{/if}}
+                    {{!-- {{#if this.btnStatus}}
+                    <p class="badge badge-success">{{this.status}}</p> <br> 
+                        <p class="cancel badge badge-danger" onclick="return cancelOrder('{{this._id}}')">Cancel Order</p>
+                        {{else}}
+                    <p class="badge badge-secondary">{{this.status}}</p> <br>
+                    {{/if}}  --}}
+                </td>
+                </form>
+                <td><a href="/admin/view-order-product/{{this._id}}"><button class="btn btn-secondary">ViewProducts</button></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+
+</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+      $(document).ready(function () {
+        $('#orders').DataTable({
+            responsive: true,
+            dom: 'Pfrtip'
+        });
+      });
+  
+  
+  
+  </script>
+  <script> 
+    
+    
+    function orderShipped(orderId){
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    $.ajax({
+      url:'/admin/shipped-order/'+orderId,
+      method:'get',
+      success:(response)=>{
+        if(response){
+          location.reload()
+        }
+      }
+    })
+  }
+  function orderDelivered(orderId){
+  
+    $.ajax({
+      url:'/admin/delivered-order/'+orderId,
+      method:'get',
+      success:(response)=>{
+        if(response){
+          location.reload()
+        }
+      }
+    })
+  }
+  </script>

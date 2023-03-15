@@ -1,0 +1,398 @@
+
+
+{{!-- <!-- cart area start  -->
+<div class="cart__sidebar">
+  <div class="container">
+    <div class="cart__content">
+      <div class="cart-text">
+        <h3 class="mb-40">Shopping cart</h3>
+        <div class="add_cart_product">
+          <div class="add_cart_product__thumb">
+            <img src="assets/img/product/29-3.jpg" alt="">
+          </div>
+          <div class="add_cart_product__content">
+            <h5><a href="shop.html">Running 3-Stripes</a></h5>
+            <p>1 × $66.00</p>
+            <button class="cart_close"><i class="fal fa-times"></i></button>
+          </div>
+        </div>
+        <div class="add_cart_product">
+          <div class="add_cart_product__thumb">
+            <img src="assets/img/product/17.jpg" alt="">
+          </div>
+          <div class="add_cart_product__content">
+            <h5><a href="shop.html">Buddy non Stripes</a></h5>
+            <p>1 × $40.00</p>
+            <button class="cart_close"><i class="fal fa-times"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="cart-icon">
+        <i class="fal fa-times"></i>
+      </div>
+      <div class="cart-bottom">
+        <div class="cart-bottom__text">
+          <span>Subtotal:</span>
+          <span class="end">$121.00</span>
+          <a href="cart.html">view cart</a>
+          <a href="checkout.html">checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cart-offcanvas-overlay"></div>
+<!-- cart area end  -->
+
+<!-- breadcrumb area start -->
+<div class="page-layout">
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="breadcrumb-area text-center">
+          <h2 class="page-title">shop</h2>
+          <div class="breadcrumb-menu">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --}}
+<!-- breadcrumb area end -->
+
+{{!-- breadcrump area secondary start--}}
+<div><img src="/stylesheets/img/slider/shop.jpg" alt=""></div>
+
+<!-- shop page start -->
+<div class="shop-page pt-85">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-12">
+        <div class="sidebar">
+          <div class="product-widget">
+            <h3 class="widget-title mb-30">Product categories</h3>
+            <ul class="product-categories">
+              {{#each getcategory}}
+              <form method="POST" action="/filter-product">
+  <input type="hidden" name="name" value="{{this.name}}">
+  <button type="submit" class="btn btn-light">{{this.name}}</button>
+</form>
+              {{!-- <li><a onclick="return filter('{{this.name}}')">{{this.name}} <span></span></a></li> --}}
+              {{/each}}
+             
+            </ul>
+          </div>
+  <h3 class="widget-title mb-30">Product Price Filter</h3>
+                    <form action="/priceFilter" method="post">
+                        <label for="min-price">Min price:</label><br>
+                        <input type="number" id="min-price" min="0" value="0" name="minprice"><br>
+                        <label for="max-price">Max price:</label><br>
+                        <input type="number" id="max-price" min="0" value="100" name="maxprice"><br>
+                        <button type="submit" class="btn btn-dark mt-3">Filter</button>
+                      </form>
+
+        </div>
+      </div>
+
+
+
+      {{!-- product card --}}
+
+
+      <div class="col-xl-9 col-lg-9 col-md-9">
+      
+        <div class="shop-page-product pt-50 pb-100">
+          <div class="row">
+            {{#if products}}
+                <div class="tab-pane fade show active" id="nav-contact" role="tabpanel"
+                  aria-labelledby="nav-contact-tab">
+                  <div class="row">
+                      {{#each products}}
+                    <div class="col-xl-3">
+                      <div class="product product-3">
+                      
+                        <div class="product__thumb">
+                          <a href="single.html">
+                             <a href="/productDetails/{{this._id}}"><img class="product-primary" src="{{this.image.[0]}}" alt="product_image"></a>
+                            {{!-- <img class="product-primary" src="{{this.image.[0]}}" alt="product_image"> --}}
+                            {{!-- <img class="product-secondary" src="assets/img/product/17-2.jpg" alt="product_image"> --}}
+                          </a>
+                          <!-- <div class="product__update">
+                                                            <a class="#">new</a>
+                                                        </div> -->
+                          <div class="product-info mb-10">
+                            <div class="product_category">
+                              <p>{{this.brand}}</p>
+                            </div>
+                            <div class="product_rating">
+                              <a href="#"><i class="fal fa-star start-color"></i></a>
+                              <a href="#"><i class="fal fa-star start-color"></i></a>
+                              <a href="#"><i class="fal fa-star start-color"></i></a>
+                              <a href="#"><i class="fal fa-star"></i></a>
+                              <a href="#"><i class="fal fa-star"></i></a>
+                            </div>
+                          </div>
+                          <div class="product__name">
+                            <h4><a href="single.html">{{this.brand}} {{this.model}}</a></h4>
+                            <div class="pro-price">
+                              <p class="p-absoulute pr-1"><span> {{#if this.offer}}
+                                                                       <del> ₹{{this.price}}</del>
+                                                                        ₹{{this.offer}}
+                                                                        {{else}}
+                                                                        ₹{{this.price}}
+                                                                        {{/if}}</span></p>
+                              {{!-- <a class="p-absoulute pr-2" href="/addtocart/{{this._id}}">add to cart</a> --}}     {{#if this.available}}
+                                                                    <button class="p-absoulute pr-2 " style="border: none;"  onclick="addtocart('{{this._id}}')">add to cart</button>
+                                                                    {{else}}
+                                                                    <button class="p-absoulute pr-2 " style="border: none;">Currentily unavailable</button>
+                                                                    {{/if}}
+                              
+                            </div>
+                          </div>
+                          <div class="product__action">
+                          
+                          </div>
+
+                        </div>
+                      
+                      </div>
+                    </div>
+                      {{/each}}
+                         {{!-- end product card --}}
+
+                        </div>
+                      </div>
+                      {{else}}
+                      <h1>NO PRODUCTS FOUND</h1>
+                      {{/if}}
+                    </div>
+                  
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- shop page end -->
+<div class="cart-offcanvas-overlay"></div>
+
+
+
+
+<div class="overlay-trigger" style="display: none;">
+    <button id="watchButton">Overlay #01</button>
+</div>
+
+<button class="overlay-close">X</button>
+
+<div class="overlay overlay01" id="card">
+    <h2 id="error"></h2>
+    <div class="card" id="result" style="width: 15rem;">
+        <img class="card-img-top" src="" id="image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title" id="bookname"></h5>
+            <p class="card-text" id="author"></p>
+            <a href="" id="hr" class="badge badge-primary">View</a>
+        </div>
+    </div>
+</div>
+{{!-- <!-- search area  -->
+<div class="search_area">
+  <div class="search_close">
+    <span><i class="fal fa-times"></i></span>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="search-wrapper text-center">
+          <h2>search</h2>
+          <div class="search-filtering pt-30">
+            <div class="search_tab">
+              <ul class="nav nav-tabs justify-content-center mb-55" id="fffd" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab2df" data-bs-toggle="tab" data-bs-target="#home2"
+                    type="button" role="tab" aria-selected="true">All categories</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab2df" data-bs-toggle="tab" data-bs-target="#profile2"
+                    type="button" role="tab" aria-selected="false">Basketball</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contact2" type="button" role="tab"
+                    aria-selected="false">Handbag</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="sportswear-tabdf" data-bs-toggle="tab" data-bs-target="#sportswear"
+                    type="button" role="tab" aria-selected="false">Sportswear</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="contact3-tabdfd" data-bs-toggle="tab" data-bs-target="#contact3"
+                    type="button" role="tab" aria-selected="false">Youth</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent2">
+                <div class="tab-pane fade show active" id="home2df" role="tabpanel">
+
+                </div>
+                <div class="tab-pane fade" id="profile2dfdf" role="tabpanel">
+
+                </div>
+                <div class="tab-pane fade" id="contact2dfdf" role="tabpanel">
+
+                </div>
+                <div class="tab-pane fade" id="sportsweardfdf" role="tabpanel">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main_search">
+            <form action="#">
+              <input type="text" name="search" placeholder="search products">
+              <button class="m-search"><i class="fal fa-search d-sm-none d-md-block"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --}}
+<script>
+
+    function addtocart(proID){
+      
+     console.log("}}}}}}}}}}}}}}}}}}}}");
+      $.ajax({
+
+        url:'/addtocart/'+proID,
+        method:'get',
+        success:(response)=>{
+cartAlert()
+          location.reload()
+        }
+      })
+}
+function filter(cat) {
+  $.ajax({
+    url: '/filter-product',
+    data: {
+      data: cat,
+    },
+    method: 'post',
+    success: (response) => {
+      location.reload();
+    },
+  });
+}
+</script>
+<script>
+ function search() {
+        
+        let name = document.getElementById('name').value
+        let data = document.getElementById('mobiles').value
+        if(name == ''){
+            name = data
+        }
+        console.log(name)
+        $.ajax({
+            url: '/search',
+            data: {
+                data: name
+            },
+            method: 'post',
+            success: (response => {
+                if(response){
+                $(function () {
+                    $('#watchButton').click();
+                });
+                document.getElementById('result').style.display='block'
+                document.getElementById('error').style.display = 'none'
+                document.getElementById('bookname').innerHTML = response[0].bookname
+                document.getElementById('author').innerHTML = response[0].authorname
+                document.getElementById('image').setAttribute('src', `/book-image/${response[0]._id}.jpg`)
+                document.getElementById('hr').setAttribute('href', `/view-product/${response[0]._id}`)
+                console.log(response)
+                }else{
+                    $(function () {
+                    $('#watchButton').click();
+                });
+                document.getElementById('result').style.display='none'
+                document.getElementById('error').innerHTML = "No books found"
+                }
+            })
+        })
+    }
+    $(function () {
+        var $overlay = $('.overlay'),
+            $overlayTrigger = $('.overlay-trigger button'),
+            $overlayClose = $('.overlay-close'),
+            openClass = 'is-open';
+        $overlayTrigger.on('click', function () {
+            var num = ('0' + ($(this).index() + 1)).slice(-2);
+            $('.overlay' + num).addClass(openClass);
+            $overlayClose.addClass(openClass);
+        });
+        $overlayClose.on('click', function () {
+            $overlayClose.removeClass(openClass);
+            $overlay.removeClass(openClass);
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+function closeOverlay() {
+    console.log("jhdhgdghsadvaghdfhgsfshgvsghdfghfdgffgdfsghfdhgfdvghvdhgfdghaghfadfghasfdgha");
+        document.getElementById("overlay-container").style.display = "none";
+    }
+
+    function generateOverlayPageHTML(data) {
+
+  const html = 
+    <div class="col-xl-3 col-lg-4 col-md-6 ">
+      <div class="product-wrap bg-light  " style="width: 400px; margin-left:400px; margin-top:20px;">
+        <div class="product-img mb-15">
+          <a href="/productdetails/${data._id}">
+            <img src="/product-images/${data._id}.jpg" alt="product">
+          </a>
+          <div class="product-action">
+          </div>
+        </div>
+        <div class="product-content">
+          <span>${data.category}</span>
+          <h4>
+            <a href="/productdetails/${data._id}">${data.shoename}</a>
+          </h4>
+          <div class="price-addtocart">
+            <div class="product-price">
+              <span>₹${data.price}</span>
+            </div>
+            <div class="viewcontent__action single_action pt-30">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ;
+  // Inject the HTML into the overlay container
+  document.getElementById("overlay-container").innerHTML = html;
+}
+</script>
+<script>  const form = document.getElementById('price-filter');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const minPrice = form.elements['min-price'].value;
+  const maxPrice = form.elements['max-price'].value;
+  // Filter the products by price using minPrice and maxPrice
+});
+</script>

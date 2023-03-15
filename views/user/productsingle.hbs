@@ -1,0 +1,216 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Gota eCommerce HTML5 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  
+  <!-- single_breadcrumb_area start  -->
+ <div class="single_breadcrumb pt-25">
+     <div class="container">
+       <div class="row">
+           <div class="col-xl-6 col-lg-6 col-md-12">
+               <div class="row">
+                   <div class="col-xl-2 col-lg-2 col-md-2">
+                       <div class="single_product_tab">
+                           <div class="single_prodct">
+                               <ul class="nav nav-tabs justify-content-center mb-55" id="dfde" role="tablist">
+                                   <li class="nav-item" role="presentation">
+                                       <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                           data-bs-target="#homde" type="button" role="tab" 
+                                           aria-selected="true"><img src="{{product.image.[0]}}" alt=""></button>
+                                   </li>
+                                   <li class="nav-item" role="presentation">
+                                       <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profidfdle"
+                                           type="button" role="tab" 
+                                           aria-selected="false"><img src="{{product.image.[1]}}" alt=""></button>
+                                   </li>
+                                   <li class="nav-item" role="presentation">
+                                       <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contadfdct"
+                                           type="button" role="tab" 
+                                           aria-selected="false"><img src="{{product.image.[2]}}" alt=""></button>
+                                   </li>
+                                   {{!-- <li class="nav-item" role="presentation">
+                                       <button class="nav-link" id="kids-tab" data-bs-toggle="tab"
+                                           data-bs-target="#kidsdfd" type="button" role="tab" 
+                                           aria-selected="false"><img src="/product-images3/{{product._id}}.jpg" alt=""></button>
+                                   </li> --}}
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-xl-10 col-lg-10 col-md-10">
+                       <div class="single_preview_product">
+                           <div class="single-popup-view">
+                               <a class="popup-image" href="assets/img/product/17-3.jpg"><i class="fal fa-search"></i></a>
+                           </div>
+                           <div class="tab-content" id="myTabefContent">
+                               <div class="tab-pane fade show active" id="homde" role="tabpanel" >
+                                  <div class="full-view">
+                                       <img src="{{product.image.[0]}}" alt="">
+                                  </div>
+                               </div>
+                               <div class="tab-pane fade" id="profidfdle" role="tabpanel" >
+                                   <div class="full-view">
+                                       <img src="{{product.image.[1]}}" alt="">
+                                   </div>                                        
+                               </div>
+                               <div class="tab-pane fade" id="contadfdct" role="tabpanel">
+                                   <div class="full-view">
+                                       <img src="{{product.image.[2]}}" alt="">
+                                   </div>                                        
+                               </div>
+                               {{!-- <div class="tab-pane fade" id="kidsdfd" role="tabpanel">
+                                   <div class="full-view">
+                                   <img src="/product-images3/{{product._id}}.jpg" alt="">
+                                   </div>
+                               </div> --}}
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+
+           <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="single_preview_content pl-30">
+                <h2 class="title-5 edit-title border-bottom-0">{{product.brand}}</h2>
+                <div class="s-product-review">
+                    <span><i class="far fa-star start-color"></i></span>
+                    <span><i class="far fa-star start-color"></i></span>
+                    <span><i class="far fa-star start-color"></i></span>
+                    <span><i class="far fa-star start-color"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                    <span class="pl-left">(1 customer review)</span>
+                </div>
+             
+                <div class="s-des">
+                  <p>Companyname:{{product.brand}}</p>
+                  <p>Color:{{product.color}}</p>
+                    
+                    <p>size:{{product.size}}</p>
+                    <p>Description:{{product.description}}</p>
+                    <li>category:{{product.category}}</li>
+                </div>
+                <div class="s-price pt-30 mb-30">
+                  {{#if product.offer}}
+                            <del><h4>₹{{product.price}}</h4></del>
+                            <span>₹{{product.offer}}</span>
+                            {{else}}
+                             <span>₹{{product.price}}</span>
+                            {{/if}}
+              </div>
+                <div class="viewcontent__action single_action pt-30">
+                    <span><input type="number" placeholder="1"></span>
+                     {{#if product.stock}}
+                      {{#if product.available}}
+                    <button class="p-absoulute pr-2  mr-5" style="border: none; width: 10% ; height: 40px;" id="cartButton"  onclick="addtocart('{{product._id}}')">add to cart</button>
+                    {{else}}
+                    <button class="p-absoulute pr-2  mr-5" style="border: none; width: 10% ; height: 40px;" >Currentily unavailable</button>
+                    {{/if}}
+                    {{else}}
+                    <p class="h5 text-danger">sorry,this product is currently out of stock</p>
+                     {{/if}}
+                    
+                    <button  class="fal fa-heart" style="border: none; " id="wishlistButton" onclick="wishlist('{{product._id}}')">wishlist</button>
+                    <!-- <span><i class="fas fa-compress"></i></span> -->
+                </div>
+                <div class="viewcontent__footer border-top-0 border-bottom pb-30">
+                    <ul>
+                        
+                        
+                    </ul>
+                    <ul>
+                        <!-- <li>jackets, Youth</li> -->
+                        <!-- <li>woo-hoodie-with-logo</li>  -->
+                    </ul>
+                </div>
+                <div class="social__media f-social-media mb-30 pt-15">
+                    <h3 class="f-title edit-f-title">FOLLOW US ON</h3>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+        </div>
+           
+       </div>
+      
+       
+
+
+     </div>
+     
+ </div>
+<!-- single_breadcrumb_area end -->
+</div>
+</div>
+</div>
+ </div>
+    </div>
+    </body>
+    </html>
+<script src="https://unpkg.com/js-image-zoom/js-image-zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-image-zoom/js-image-zoom.min.js"></script>
+<script>
+    var options = {
+    width: 400,
+    scale: 1,
+    zoomPosition: 'right' // required
+    // more options here
+};
+new ImageZoom(document.getElementById("homde"), options);
+new ImageZoom(document.getElementById("profidfdle"), options);
+new ImageZoom(document.getElementById("contadfdct"), options);
+new ImageZoom(document.getElementById("kidsdfd"), options);
+
+</script>
+
+<script>
+
+    function addtocart(proID){
+        
+     console.log("}}}}}}}}}}}}}}}}}}}}");
+      $.ajax({
+
+        url:'/addtocart/'+proID,
+        method:'get',
+        success:(response)=>{
+            console.log(">>>>>>>>>>>>>>>>>>>>>")
+ cartAlert()
+        setTimeout(()=>{
+          location.reload();
+          
+        },1500)
+          
+        }
+      })
+}
+
+</script>
+
+<script>
+
+function wishlist(proID){
+
+console.log("++++++++++++++++");
+
+$.ajax({
+
+url:'/add-to-wishlist/'+proID,
+method:'get',
+success:(response)=>{
+     wishlistAlert()
+    location.reload()
+}
+})
+}
+
+</script>

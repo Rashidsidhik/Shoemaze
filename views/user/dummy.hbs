@@ -1,0 +1,293 @@
+<header class="header-area header-transparent">
+    <div class="gota_top_4 d-none d-lg-block">
+        <div class="container">
+            <div class="row align-items-center pt-10 pb-10">
+                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 offset-xl-3">
+                    <div class="Message__customer pl-25">
+                        <ul>
+                            <li>Always Free Delivery</li>
+                            <li>Quality Guarantee Of Products</li>
+                            <li>Fast Returnings Program</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gota_search">
+        <div class="container">
+            <div class="background-white white-1">
+                <div class="row align-items-center pb-10">
+                    <div class="col-xl-1 col-lg-2 col-md-2 col-sm-6">
+                        <div class="logo_3">
+                            <a href="/home">
+                                <h1>WISDOM</h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-4 col-md-6 col-sm-12 d-none d-lg-block">
+                        <div class="search__input">
+                            <div class="search__input-group search__input-group-c">
+                                    <!-- <a class="absoulute search" href="#"><i class="far fa-search"></i></a> -->
+                                    <input type="search" placeholder="Enter book name to search..." id="name"
+                                        onkeyup="return searchBook()" />
+                                    <!-- <a class="absoulute close" href="#"><i class="fal fa-times"></i></a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" drp col-xl-4 col-lg-6 col-md-8 col-sm-6 d-flex justify-content-end">
+                        <div class="gota_top pl-40 gota_top_bg">
+                            <div class="gota_lang gota_lang_3 d-flex justify-content-end">
+                                <ul class="d-none d-lg-block">
+                                </ul>
+                            {{#if guest}}
+                                
+                            {{else}}
+                                <div class="drp dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        {{user}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                    </div>
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex d-lg-none">
+                        <div class="sidemenu toggle-bar">
+                            <a class="open" href="#"><i class="fal fa-bars"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {{#if guest}}
+                <div class="c-border">
+                    <div class="row align-items-center">
+
+                        <div class="nav-category col-xl-8 col-lg-8 col-md-4 col-sm-4">
+                            <div class="main-menu main-menu-3">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li class="user-info"><a href="">
+                                                <h3 class="text-white">{{user}}</h3>
+                                            </a>
+                                        <li class=""><a href="/shop-books">Shop</a>
+
+                                        </li>
+                                        <li class=""><a href="/offers">Special offers</a></li>
+                                        <li class=""><a href="#kids">Kids</a>
+                                        <li class=""><a href="/login">Login</a>
+
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="c-border">
+                    <div class="row align-items-center">
+
+                        <div class="nav-category col-xl-8 col-lg-8 col-md-4 col-sm-4">
+                            <div class="main-menu main-menu-3">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li class="user-info"><a href="">
+                                                <h3 class="text-white">{{user}}</h3>
+                                            </a>
+                                        <li class=""><a href="/shop-books">Shop</a>
+
+                                        </li>
+                                        <li class=""><a href="/offers">Special offers</a></li>
+                                        <li class=""><a href="/account">Account</a></li>
+                                        <li class=""><a href="/view-orders">Orders</a></li>
+                                        <li class=""><a href="/cart">Cart</a></li>
+                                        <li class=""><a href="#kids">Kids</a>
+
+                              
+
+                                        <li class="user-info"><a href="/logout">logout</a>
+
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+</header>
+
+
+<!-- header area end -->
+<div class="fix">
+    <div class="side-info">
+        <button class="side-info-close"><i class="fal fa-times"></i></button>
+        <div class="side-info-content">
+        <input type="search" placeholder="Enter book name to search..." id="mobile"
+             onkeyup="return searchBook()" />
+            <div class="mobile-menu">
+            </div>
+            <div class="contact-infos mb-30">
+
+                <div class="contact-list mb-30">
+                    <h4>Office Address</h4>
+                    <p>123/A, Miranda City Likaoli
+                        Prikano, Dope</p>
+                </div>
+                <div class="contact-list mb-30">
+                    <h4>Phone Number</h4>
+                    <p>+0989 7876 9865 9</p>
+                    <p>+(090) 8765 86543 85</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="offcanvas-overlay"></div>
+
+<!-- slider area start -->
+<div class="slider-4" data-background="/images/bookshelf.jpeg">
+    <div class="container">
+        <div class="row">
+            <div class="page-name col-xl-12 col-lg-12 colmd-12">
+                <h1>{{page}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider area end -->
+<div class="cart__sidebar">
+    <div class="container">
+        {{#if cart}}
+        <div class="cart__content">
+            <div class="cart-text">
+                <h3 class="mb-40">Wisdom</h3>
+                {{#each cart}}
+                <div class="add_cart_product mt-5">
+                    <div class="add_cart_product__thumb">
+                        <img src="/book-image/{{this.book._id}}.jpg" alt="loading...">
+                    </div>
+                    <div class="add_cart_product__content">
+                        <h5><a href="/view-product/{{this.book._id}}">{{this.book.bookname}}</a></h5>
+                        <h6>
+                            {{#if this.book.offer}}
+                            <del> ₹{{this.book.price}}</del>
+                            ₹{{this.book.offer}}
+                            {{else}}
+                            ₹{{this.book.price}}
+                            {{/if}}
+                        </h6>
+                        <p>Qty. {{this.quantity}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="cart-icon">
+                <i class="fal fa-times"></i>
+            </div>
+            <div class="cart-bottom">
+                <div class="cart-bottom__text">
+
+                    <span>Subtotal:</span>
+                    <span class="end">₹{{total}}</span>
+                    <a href="/cart">view cart</a>
+                    <a href="/checkout">checkout</a>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="text-center">
+            <h5>No items in cart</h5>
+            <br>
+            <br>
+            <a href="/shop-books">Add books to cart</a>
+        </div>
+        {{/if}}
+    </div>
+</div>
+<div class="cart-offcanvas-overlay"></div>
+
+
+
+
+<div class="overlay-trigger" style="display: none;">
+    <button id="watchButton">Overlay #01</button>
+</div>
+
+<button class="overlay-close">X</button>
+
+<div class="overlay overlay01" id="card">
+    <h2 id="error"></h2>
+    <div class="card" id="result" style="width: 15rem;">
+        <img class="card-img-top" src="" id="image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title" id="bookname"></h5>
+            <p class="card-text" id="author"></p>
+            <a href="" id="hr" class="badge badge-primary">View</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function searchBook() {
+        
+        let name = document.getElementById('name').value
+        let data = document.getElementById('mobile').value
+        if(name == ''){
+            name = data
+        }
+        console.log(name)
+        $.ajax({
+            url: '/search',
+            data: {
+                data: name
+            },
+            method: 'post',
+            success: (response => {
+                if(response){
+                $(function () {
+                    $('#watchButton').click();
+                });
+                document.getElementById('result').style.display='block'
+                document.getElementById('error').style.display = 'none'
+                document.getElementById('bookname').innerHTML = response[0].bookname
+                document.getElementById('author').innerHTML = response[0].authorname
+                document.getElementById('image').setAttribute('src', `/book-image/${response[0]._id}.jpg`)
+                document.getElementById('hr').setAttribute('href', `/view-product/${response[0]._id}`)
+                console.log(response)
+                }else{
+                    $(function () {
+                    $('#watchButton').click();
+                });
+                document.getElementById('result').style.display='none'
+                document.getElementById('error').innerHTML = "No books found"
+                }
+            })
+        })
+    }
+    $(function () {
+        var $overlay = $('.overlay'),
+            $overlayTrigger = $('.overlay-trigger button'),
+            $overlayClose = $('.overlay-close'),
+            openClass = 'is-open';
+        $overlayTrigger.on('click', function () {
+            var num = ('0' + ($(this).index() + 1)).slice(-2);
+            $('.overlay' + num).addClass(openClass);
+            $overlayClose.addClass(openClass);
+        });
+        $overlayClose.on('click', function () {
+            $overlayClose.removeClass(openClass);
+            $overlay.removeClass(openClass);
+        });
+    });
+</script>

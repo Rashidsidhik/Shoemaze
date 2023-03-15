@@ -1,0 +1,34 @@
+<section id="footer" class="mt-5">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">IMAGE</th>
+            <th scope="col">BRAND</th>
+            <th scope="col">MODEL</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">QUANTITY</th>
+            <th scope="col">ShippingStatus</th>
+          
+
+          </tr>
+        </thead>
+        <tbody>
+            {{#each singleOrder}}
+            {{!-- <% OrderDetails.forEach(function(order, i){ %> --}}
+          <tr >
+        
+          
+            <td> <img style="width: 100px; height:auto;" src="{{this.orders.image.[0]}}" alt=""></td>
+            <td>{{ this.orders.brand}}</td>
+            <td>{{ this.orders.model }}</td>
+            <td>{{ this.orders.price}}</td>
+            <td>{{ this.products.quantity }}</td>
+            <td>{{ this.status }}</td>
+            
+
+            
+          </tr>
+         {{/each}}
+        </tbody>
+      </table>
+    </section>
