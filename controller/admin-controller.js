@@ -283,7 +283,7 @@ console.log(req.params.id);
       salesReportPage(req, res) {
         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>sza");
         getSalesReport().then((report) => {
-          res.render('admin/salesReport', {layout: 'admin-layout', report, admin: true });
+          res.render('admin/salesreport', {layout: 'admin-layout', report, admin: true });
           
         }); 
       },
