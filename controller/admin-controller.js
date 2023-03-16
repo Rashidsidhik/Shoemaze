@@ -293,9 +293,9 @@ console.log(req.params.id);
             start: req.body.startDate,
             end: req.body.endDate,
           };
-          res.render('admin/salesReport', { layout: 'admin-layout',report, admin: true, dates });
+          res.render('admin/salesreport', { layout: 'admin-layout',report, admin: true, dates });
         }).catch(() => {
-          res.render('admin/salesReport', { layout: 'admin-layout',admin: true });
+          res.render('admin/salesreport', { layout: 'admin-layout',admin: true });
         });
 
 },
