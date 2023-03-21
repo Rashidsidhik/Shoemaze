@@ -1,3 +1,10 @@
+<style>
+    #countdown {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+</style>
 <div class="login_register_area">
     <div class="container">
         <div class="row gx-5">
@@ -17,8 +24,44 @@
                         <div class="input_wrap">
                             <button type="submit">log in</button>
                         </div>
-                        
-                       
+                        </form>
+                        <form action="/otpVerify" method="post">
+                        <input type="hidden" name="phone" class="form-control" value="{{number}}">
+                         <button type="submit" id="myButton" style="display: none;"> <a> Resend OTP </a></button>
+                       <span id="countdown"></span>
                     </form>
                 </div>
   </div>
+  <script>  
+setTimeout(function() {
+  document.getElementById("myButton").style.display = "block";
+}, 30000);
+
+
+// Set the date and time for the countdown (in this case, 10 minutes from now)
+var countDownDate = new Date().getTime() + (30 * 1000);
+
+// Update the countdown every second
+var x = setInterval(function() {
+
+  // Get the current time
+  var now = new Date().getTime();
+
+  // Calculate the time remaining
+  var distance = countDownDate - now;
+
+  // Calculate minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the countdown in the "countdown" span
+  document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s ";
+
+  // If the countdown is finished, display "EXPIRED" and stop the countdown
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+</SCript>

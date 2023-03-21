@@ -10,6 +10,7 @@ module.exports = {
         product.image=urls;
         product.stock=true;
         product.price = parseInt(product.price);
+        product.StockCount = parseInt(product.StockCount);
         product.available=true;
         product.date=new Date()
         let cateName = await this.findCategory(product.categoryid)
@@ -58,6 +59,7 @@ async adminEditsubmit(editid,body,urls){
     console.log(body.categoryid);
     let cateName = await this.findCategory(body.categoryid)
     body.price = parseInt(body.price);
+    body.StockCount = parseInt(body.StockCount);
     body.available=true 
     body.stock=true
     body.image=urls;
@@ -76,8 +78,8 @@ async adminEditsubmit(editid,body,urls){
                 dateofpublish:body.dateofpublish,
                 image:body.image,
                 price:body.price,
-                stock:body.stock
-                
+                stock:body.stock,
+                StockCount:body.StockCount
 
 
             },

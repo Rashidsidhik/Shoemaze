@@ -60,13 +60,15 @@
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
   <script>
-      $(document).ready(function () {
-        $('#orders').DataTable({
-            responsive: true,
-            dom: 'Pfrtip'
-        });
-      });
-  
+  $(document).ready(function () {
+  $('#orders').DataTable({
+    responsive: true,
+    dom: 'Pfrtip',
+    columnDefs: [{ targets: [0], type: 'date' }],
+    order: [[0, 'asc']]
+  });
+});
+
   
   
   </script>

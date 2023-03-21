@@ -182,7 +182,7 @@
                                 <td>product Name</td>
                                 <td>price</td>
                                 <td>Quantity</td>
-                                <td>Total</td>
+                                {{!-- <td>Total</td> --}}
                                 <td>Option</td>
                                 
                                </tr>
@@ -203,9 +203,9 @@
                                         <button class="quantitys btn btn-dark" onclick="changeQuantity('{{this._id}}','{{this.products._id}}',-1)">-</button>
                                          <span id="{{this.products._id}}">{{this.quantity}}</span>
                                         <button class="quantity btn btn-dark" onclick="changeQuantity('{{this._id}}','{{this.products._id}}',1)">+</button>
-                                        
+                                        <span id="error" style="color: red;"></span>
                                     </div></td>
-                                     <td></td>
+                                     {{!-- <td></td> --}}
                                     <td class="width-set">
                                         <button class="quantity btn btn-danger" onclick="removeCartItem('{{this._id}}','{{this.products._id}}')">Remove</button>
                                     </td>
@@ -362,7 +362,22 @@ console.log(response,'ddddddddddddddddd')
                       document.getElementById('Totala').innerHTML=response.Total
                 }
                 // alert(response)
-            }
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+if (xhr.status === 400 && xhr.responseJSON && xhr.responseJSON.error === "Stock limit Exceeded") {
+ Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Stock limit Exceeded!',
+  footer: '<a href="">SORRY</a>'
+})
+    // Set a timer to clear the error message after 5 seconds
+   
+} else {
+    $('#error').text(error);
+}
+}
             
            })
   }

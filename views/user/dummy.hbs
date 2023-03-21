@@ -1,293 +1,400 @@
-<header class="header-area header-transparent">
-    <div class="gota_top_4 d-none d-lg-block">
-        <div class="container">
-            <div class="row align-items-center pt-10 pb-10">
-                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 offset-xl-3">
-                    <div class="Message__customer pl-25">
-                        <ul>
-                            <li>Always Free Delivery</li>
-                            <li>Quality Guarantee Of Products</li>
-                            <li>Fast Returnings Program</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+     <meta charset="utf-8"> 
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Gota eCommerce HTML5 Template</title>
+    <!-- <meta name="description" content="">  -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
+
+</head>  
+
+<body>
+    
+ <div class="search_area">
+        <div class="search_close">
+            <span><i class="fal fa-times"></i></span>
         </div>
-    </div>
-    <div class="gota_search">
         <div class="container">
-            <div class="background-white white-1">
-                <div class="row align-items-center pb-10">
-                    <div class="col-xl-1 col-lg-2 col-md-2 col-sm-6">
-                        <div class="logo_3">
-                            <a href="/home">
-                                <h1>WISDOM</h1>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-7 col-lg-4 col-md-6 col-sm-12 d-none d-lg-block">
-                        <div class="search__input">
-                            <div class="search__input-group search__input-group-c">
-                                    <!-- <a class="absoulute search" href="#"><i class="far fa-search"></i></a> -->
-                                    <input type="search" placeholder="Enter book name to search..." id="name"
-                                        onkeyup="return searchBook()" />
-                                    <!-- <a class="absoulute close" href="#"><i class="fal fa-times"></i></a> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" drp col-xl-4 col-lg-6 col-md-8 col-sm-6 d-flex justify-content-end">
-                        <div class="gota_top pl-40 gota_top_bg">
-                            <div class="gota_lang gota_lang_3 d-flex justify-content-end">
-                                <ul class="d-none d-lg-block">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="search-wrapper text-center">
+                        <h2>search</h2>
+                        <div class="search-filtering pt-30">
+                            <div class="search_tab">
+                                <ul class="nav nav-tabs justify-content-center mb-55" id="myTab2" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="home-tab2" data-bs-toggle="tab"
+                                            data-bs-target="#home2" type="button" role="tab"
+                                            aria-selected="true">All categories</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="profile-tab2" data-bs-toggle="tab"
+                                            data-bs-target="#profile2" type="button" role="tab" 
+                                            aria-selected="false">Basketball</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" data-bs-toggle="tab"
+                                            data-bs-target="#contact2" type="button" role="tab" 
+                                            aria-selected="false">Handbag</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="sportswear-tab" data-bs-toggle="tab"
+                                            data-bs-target="#sportswear" type="button" role="tab"
+                                            aria-selected="false">Sportswear</button>
+                                    </li>
                                 </ul>
-                            {{#if guest}}
-                                
-                            {{else}}
-                                <div class="drp dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        {{user}}
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                <div class="tab-content" id="myTabContent2">
+                                    <div class="tab-pane fade show active" id="home2" role="tabpanel"
+                                        >
+    
+                                    </div>
+                                    <div class="tab-pane fade" id="profile2" role="tabpanel"
+                                        >
+    
+                                    </div>
+                                    <div class="tab-pane fade" id="contact2" role="tabpanel">
+    
+                                    </div>
+                                    <div class="tab-pane fade" id="sportswear" role="tabpanel"
+                                        >
+    
                                     </div>
                                 </div>
-                                {{/if}}
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-2 d-flex d-lg-none">
-                        <div class="sidemenu toggle-bar">
-                            <a class="open" href="#"><i class="fal fa-bars"></i></a>
+                        <div class="main_search">
+                            <form action="#">
+                                <input type="text" name="search" placeholder="search products">
+                                <button class="m-search"><i class="fal fa-search d-sm-none d-md-block"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                {{#if guest}}
-                <div class="c-border">
-                    <div class="row align-items-center">
+            </div>
+        </div>
+    </div> 
 
-                        <div class="nav-category col-xl-8 col-lg-8 col-md-4 col-sm-4">
-                            <div class="main-menu main-menu-3">
-                                <nav id="mobile-menu">
-                                    <ul>
-                                        <li class="user-info"><a href="">
-                                                <h3 class="text-white">{{user}}</h3>
-                                            </a>
-                                        <li class=""><a href="/shop-books">Shop</a>
-
-                                        </li>
-                                        <li class=""><a href="/offers">Special offers</a></li>
-                                        <li class=""><a href="#kids">Kids</a>
-                                        <li class=""><a href="/login">Login</a>
-
-
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+    <div class="fix">
+        <div class="side-info">
+            <button class="side-info-close"><i class="fal fa-times"></i></button>
+            <div class="side-info-content">
+                <div class="mobile-menu"></div>
+                <div class="contact-infos mb-30">
+                    <div class="contact-list mb-30">
+                        <h4>Office Address</h4>
+                        <p>123/A, Miranda City Likaoli
+                            Prikano, Dope</p>
+                    </div>
+                    <div class="contact-list mb-30">
+                        <h4>Phone Number</h4>
+                        <p>+0989 7876 9865 9</p>
+                        <p>+(090) 8765 86543 85</p>
+                    </div>
+                    <div class="contact-list mb-30">
+                        <h4>Email Address</h4>
+                        <p><a href="https://themepure.net/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="442d2a222b04213c25293428216a272b29">[email&#160;protected]</a></p>
+                        <p><a href="https://themepure.net/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="513429303c213d347f3c30383d1139243c7f323e3c">[email&#160;protected]</a></p>
                     </div>
                 </div>
-                {{else}}
-                <div class="c-border">
-                    <div class="row align-items-center">
-
-                        <div class="nav-category col-xl-8 col-lg-8 col-md-4 col-sm-4">
-                            <div class="main-menu main-menu-3">
-                                <nav id="mobile-menu">
-                                    <ul>
-                                        <li class="user-info"><a href="">
-                                                <h3 class="text-white">{{user}}</h3>
-                                            </a>
-                                        <li class=""><a href="/shop-books">Shop</a>
-
-                                        </li>
-                                        <li class=""><a href="/offers">Special offers</a></li>
-                                        <li class=""><a href="/account">Account</a></li>
-                                        <li class=""><a href="/view-orders">Orders</a></li>
-                                        <li class=""><a href="/cart">Cart</a></li>
-                                        <li class=""><a href="#kids">Kids</a>
-
-                              
-
-                                        <li class="user-info"><a href="/logout">logout</a>
-
-
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{/if}}
             </div>
         </div>
     </div>
+    <div class="offcanvas-overlay"></div>
 
-</header>
-
-
-<!-- header area end -->
-<div class="fix">
-    <div class="side-info">
-        <button class="side-info-close"><i class="fal fa-times"></i></button>
-        <div class="side-info-content">
-        <input type="search" placeholder="Enter book name to search..." id="mobile"
-             onkeyup="return searchBook()" />
-            <div class="mobile-menu">
-            </div>
-            <div class="contact-infos mb-30">
-
-                <div class="contact-list mb-30">
-                    <h4>Office Address</h4>
-                    <p>123/A, Miranda City Likaoli
-                        Prikano, Dope</p>
-                </div>
-                <div class="contact-list mb-30">
-                    <h4>Phone Number</h4>
-                    <p>+0989 7876 9865 9</p>
-                    <p>+(090) 8765 86543 85</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="offcanvas-overlay"></div>
-
-<!-- slider area start -->
-<div class="slider-4" data-background="/images/bookshelf.jpeg">
+   <!-- cart area start  --->
+  <div class="cart__sidebar">
     <div class="container">
-        <div class="row">
-            <div class="page-name col-xl-12 col-lg-12 colmd-12">
-                <h1>{{page}}</h1>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- slider area end -->
-<div class="cart__sidebar">
-    <div class="container">
-        {{#if cart}}
         <div class="cart__content">
             <div class="cart-text">
-                <h3 class="mb-40">Wisdom</h3>
-                {{#each cart}}
-                <div class="add_cart_product mt-5">
+                <h3 class="mb-40">Shopping cart</h3>
+                <div class="add_cart_product">
                     <div class="add_cart_product__thumb">
-                        <img src="/book-image/{{this.book._id}}.jpg" alt="loading...">
+                        <img src="/img/quick_view/page/product/29-3.jpg" alt="">
                     </div>
                     <div class="add_cart_product__content">
-                        <h5><a href="/view-product/{{this.book._id}}">{{this.book.bookname}}</a></h5>
-                        <h6>
-                            {{#if this.book.offer}}
-                            <del> ₹{{this.book.price}}</del>
-                            ₹{{this.book.offer}}
-                            {{else}}
-                            ₹{{this.book.price}}
-                            {{/if}}
-                        </h6>
-                        <p>Qty. {{this.quantity}}</p>
+                        <h5><a href="shop.html">Running 3-Stripes</a></h5>
+                        <p>1 × $66.00</p>
+                        <button class="cart_close"><i class="fal fa-times"></i></button>
                     </div>
                 </div>
-                {{/each}}
+                <div class="add_cart_product">
+                    <div class="add_cart_product__thumb">
+                        <img src="/img/quick_view/page/product/17.jpg" alt="">
+                    </div>
+                    <div class="add_cart_product__content">
+                        <h5><a href="shop.html">Buddy non Stripes</a></h5>
+                        <p>1 × $40.00</p>
+                        <button class="cart_close"><i class="fal fa-times"></i></button>
+                    </div>
+                </div>
             </div>
             <div class="cart-icon">
                 <i class="fal fa-times"></i>
             </div>
             <div class="cart-bottom">
                 <div class="cart-bottom__text">
-
                     <span>Subtotal:</span>
-                    <span class="end">₹{{total}}</span>
-                    <a href="/cart">view cart</a>
-                    <a href="/checkout">checkout</a>
+                    <span class="end">$121.00</span>
+                    <a href="cart.html">view cart</a>
+                    <a href="checkout.html">checkout</a>
                 </div>
             </div>
         </div>
-        {{else}}
-        <div class="text-center">
-            <h5>No items in cart</h5>
-            <br>
-            <br>
-            <a href="/shop-books">Add books to cart</a>
-        </div>
-        {{/if}}
     </div>
 </div>
 <div class="cart-offcanvas-overlay"></div>
+<!-- cart area end  -->
 
-
-
-
-<div class="overlay-trigger" style="display: none;">
-    <button id="watchButton">Overlay #01</button>
-</div>
-
-<button class="overlay-close">X</button>
-
-<div class="overlay overlay01" id="card">
-    <h2 id="error"></h2>
-    <div class="card" id="result" style="width: 15rem;">
-        <img class="card-img-top" src="" id="image" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title" id="bookname"></h5>
-            <p class="card-text" id="author"></p>
-            <a href="" id="hr" class="badge badge-primary">View</a>
+    <!-- breadcrumb area start -->
+    <div class="page-layout" data-background="/img/slider/shop.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="breadcrumb-area text-center">
+                        <h2 class="page-title">Cart</h2>
+                            <div class="breadcrumb-menu">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="cart.html">cart</a></li>
+                                </ol>
+                            </nav>
+                            </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <!-- breadcrumb area end -->
+
+    <div class="f_cart_area pt-110 mb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-12">
+                    <div class="cart_table">
+                        <table>
+                            <tr> 
+                                <td>Product</td>
+                                <td>product Name</td>
+                                <td>price</td>
+                                <td>Quantity</td>
+                                <!-- <td>Total</td> -->
+                                <td>Option</td>
+                                
+                               </tr>
+                               
+                            <tbody>
+
+                                <% products.forEach(function(product, i){ %>
+                                <tr class="max-width-set">
+                                    
+                                    <td>
+                                        <img src="product-images/<%= product.products.productImage[0] %>" alt="">
+                                        
+                                    </td>
+                                    <td><%= product.products.shoename %></td>
+                                    
+                                 <% if (product.products.offerAmount) { %>
+                                    <td><%= product.products.offerAmount %></td>
+                                    <% } else { %>
+                                        <td><%= product.products.price %></td>
+                                        <% } %>
+                                    <td><div class="viewcontent__action single_action pt-30">
+                                       
+                                        <button class="quantitys btn btn-dark" onclick="changeQuantity('<%= product._id %>','<%= product.products._id %>','<%= Total %>','<%= product.products.price %>',-1)">-</button>
+                                         <span id="<%= product.products._id %>"><%= product.quantity %></span>
+                                        <button class="quantity btn btn-dark" onclick="changeQuantity('<%= product._id %>','<%= product.products._id %>','<%= Total %>','<%= product.products.price %>',1)">+</button><br>
+                                       
+                                        <span id="error" style="color: red;"></span>
+                                        
+                                    </div></td>
+                                     <!-- <td id="RowTotal"><%= Total %></td> -->
+                                    <td class="width-set">
+                                        <button class="quantity btn btn-danger" onclick="removeCartItem('<%= product._id %>','<%= product.products._id %>')">Remove</button>
+                                    </td>
+                                    
+                                </tr>
+                                <% }); %> 
+                            </tbody>
+                            <tfoot>
+                               
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12">
+                    <div class="cart__acount">
+                        <h5>Cart totals</h5>
+                      <table>
+                          <tr class="first-child">
+                              <td>Subtotal</td>
+                              <td id="Total"><%= Total %></td>
+                          </tr>
+                          <tr class="first-child lastchild">
+                              <td>Shipping</td>
+                              <td>Enter your address to view shipping options <br>
+                                Calculate shipping</td>
+                          </tr>
+                          <tr class="first-child">
+                              <td>Total</td>
+                              <td><span id="Total"><%= Total %></span></td>
+                          </tr>
+                        
+                          <tr>   
+                              <td colspan="2">
+                                  <a href="/proceedToCheckout"><input type="submit" value="procced to checkout"></a>
+                              </td>
+                          </tr>
+                      
+                      </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+     <!-- popup area start -->
+    <div class="overlay"></div>
+    <div class="product-popup">
+        <div class="view-background">
+            <div class="row">
+                <div class="col-xl-5 col-lg-5 col-md-5">
+                    <div class="quickview">
+                        <div class="quickview__thumb">
+                            <img src="/img/quick_view/25.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-7 col-md-7">
+                    <div class="viewcontent">
+                        <div class="viewcontent__header">
+                            <h2>Brown Leather Bags</h2>
+                            <a class="view_close product-p-close" href="javascript:void(0)"><i
+                                    class="fal fa-times-circle"></i></a>
+                        </div>
+                        <div class="viewcontent__rating">
+                            <i class="fal fa-star ratingcolor"></i>
+                            <i class="fal fa-star ratingcolor"></i>
+                            <i class="fal fa-star ratingcolor"></i>
+                            <i class="fal fa-star"></i>
+                        </div>
+                        <div class="viewcontent__price">
+                            <h4><span>$</span>99.00</h4>
+                        </div>
+                        <div class="viewcontent__stock">
+                            <h4>Available :<span> In stock</span></h4>
+                        </div>
+                        <div class="viewcontent__details">
+                            <p>Anlor sit amet, consectetur adipiscing elit. Fusce condimentum est lacus, non pretium
+                                risus lacinia vel. Fusce eget turpis orci.</p>
+                        </div>
+                        <div class="viewcontent__action">
+                            <span>Qty</span>
+                            <span><input type="number" placeholder="1"></span>
+                            <span><a href="#">add to cart</a></span>
+                            <span><i class="fal fa-heart"></i></span>
+                            <span><i class="fal fa-info-circle"></i></span>
+                        </div>
+                        <div class="viewcontent__footer">
+                            <ul>
+                                <li>Category:</li>
+                                <li>SKU:</li>
+                                <li>Brand:</li>
+                            </ul>
+                            <ul>
+                                <li>Watches</li>
+                                <li>2584-MK63</li>
+                                <li>Brenda</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup area end -->
+
+</body>
+
+
+</html>
+
 
 <script>
-    function searchBook() {
+    function changeQuantity(cartID,proID,Total,price,count){
+          console.log(Total,price);
         
-        let name = document.getElementById('name').value
-        let data = document.getElementById('mobile').value
-        if(name == ''){
-            name = data
-        }
-        console.log(name)
-        $.ajax({
-            url: '/search',
-            data: {
-                data: name
+        let quantity=parseInt(document.getElementById(proID).innerHTML)
+        let CartTotal = document.getElementById('Total').innerHTML
+        // let Subtotal = document.getElementById('SubTotal').innerHTML
+        // let RowTotal = document.getElementById('RowTotal').innerHTML
+        count=parseInt(count)
+           $.ajax({
+            
+            url:'/change-product-quantity',
+            data:{
+                
+                cart:cartID,
+                products:proID,
+                count:count,
+                quantity:quantity,
+                
             },
-            method: 'post',
-            success: (response => {
-                if(response){
-                $(function () {
-                    $('#watchButton').click();
-                });
-                document.getElementById('result').style.display='block'
-                document.getElementById('error').style.display = 'none'
-                document.getElementById('bookname').innerHTML = response[0].bookname
-                document.getElementById('author').innerHTML = response[0].authorname
-                document.getElementById('image').setAttribute('src', `/book-image/${response[0]._id}.jpg`)
-                document.getElementById('hr').setAttribute('href', `/view-product/${response[0]._id}`)
-                console.log(response)
+            method:'post',
+            success:(response)=>{
+              
+                if(response.removeProduct){
+                    alert("product remove from cart")
+                    location.reload()
                 }else{
-                    $(function () {
-                    $('#watchButton').click();
-                });
-                document.getElementById('result').style.display='none'
-                document.getElementById('error').innerHTML = "No books found"
+                    document.getElementById(proID).innerHTML=quantity+count
+                    document.getElementById('Total').innerHTML=parseInt(CartTotal)+(count*price)
+                    location.reload()
                 }
-            })
+                // alert(response)
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+if (xhr.status === 400 && xhr.responseJSON && xhr.responseJSON.error === "Stock limit Exceeded") {
+    document.getElementById('error').innerHTML = xhr.responseJSON.error;
+    swal({
+  title: "Stock Limit Exceeded",
+  
+  icon: "warning",
+  dangerMode: true,
+})
+    
+    setTimeout(function() {
+        document.getElementById('error').innerHTML = "";
+    }, 5000);
+    // Set a timer to clear the error message after 5 seconds
+   
+} else {
+    $('#error').text(error);
+}
+}
+            
+    
+            
+           })
+    }
+    function removeCartItem(cartID,proID){
+        
+        $.ajax({
+            url:'/remove_cartItem',
+             data:{
+                cart:cartID,
+                products:proID
+             },
+             method:'post',
+             success:(response)=>{
+                    alert("product remove from cart")
+                    location.reload()
+                
+             }
         })
     }
-    $(function () {
-        var $overlay = $('.overlay'),
-            $overlayTrigger = $('.overlay-trigger button'),
-            $overlayClose = $('.overlay-close'),
-            openClass = 'is-open';
-        $overlayTrigger.on('click', function () {
-            var num = ('0' + ($(this).index() + 1)).slice(-2);
-            $('.overlay' + num).addClass(openClass);
-            $overlayClose.addClass(openClass);
-        });
-        $overlayClose.on('click', function () {
-            $overlayClose.removeClass(openClass);
-            $overlay.removeClass(openClass);
-        });
-    });
 </script>

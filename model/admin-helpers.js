@@ -76,6 +76,9 @@ module.exports={
                 'user.name': 1,deliveryDetails: 1, btn:1, products: 1, TotalAmount: 1,PaymentMethod: 1, date: 1, status: 1, shippingStatus: 1,
               },
             },
+            {
+              $sort: { date: -1 } // Sort by date in descending order
+            }
           ]).toArray();
           if (OrderDetails.length == 0) {
             reject();
@@ -89,7 +92,7 @@ module.exports={
    
          if(status=='placed'|| status=='pending'){
    
-          statuse='order cancelled'
+          status='order cancelled'
            
          }
          return new Promise((resolve,reject)=>{
@@ -170,7 +173,7 @@ module.exports={
             db.get()
                 .collection(collection.ORDER_COLLECTION)
                 .updateOne({ _id: ObjectId(orderId) }, [
-                    { $set: { status: 'Delivered',return:true, } },
+                    { $set: { status: 'Delivered',return:true,btn:false } },
                 ])
                 .then((response) => {
 

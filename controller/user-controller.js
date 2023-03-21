@@ -1,4 +1,4 @@
-const { doSignup, doLogin,findByNumber,addToCart,getAllCartProducts,getCartTotalAmount,changeProductQuantity,removeCartItems,getproductList,PlaceOrdered,generateRazorpay,OrderDetails,verifypayments,changePaymentStatus,OrderCancelled,orderProductView,passchanging, addAditionalAddress,getUserAddress,findOrderAddress,editAddress,getUserDetails,deleteAddress,returningOrder,couponManage,getAllCoupons,UserWishlist,getAllWishlist,removeWishlistItems,getSearchProduct,searchResults,getPriceFilter} = require("../model/user-helpers")
+const { doSignup, doLogin,findByNumber,addToCart,getAllCartProducts,getCartTotalAmount,changeProductQuantity,removeCartItems,getproductList,PlaceOrdered,generateRazorpay,OrderDetails,verifypayments,changePaymentStatus,OrderCancelled,orderProductView,passchanging, addAditionalAddress,getUserAddress,findOrderAddress,editAddress,getUserDetails,deleteAddress,returningOrder,couponManage,getAllCoupons,UserWishlist,getAllWishlist,removeWishlistItems,getSearchProduct,searchResults,getPriceFilter,removeCartAfterOrder} = require("../model/user-helpers")
 var productHelpers = require('../model/product-helpers')
 const{getTotalPrice} =require('../utils/getcart')
 require('dotenv').config()
@@ -98,12 +98,14 @@ module.exports = {
     },
     otpverify(req, res) {
         number = req.body.phone;
-       
+       console.log(number,"<<<<<<<<>>>>>>>>>>>>");
   if (number.substring(0, 3) !== '+91') {
     number = `${number}`;
   }
   // accound finding
   findByNumber(number).then((user) => {
+    
+
     
    otpuser=user;
     
@@ -115,7 +117,7 @@ module.exports = {
         channel: 'sms',
       })
       .then(() => {
-        res.render('user/otpverify', {user:true});
+        res.render('user/otpverify', {user:true,number});
       })
       .catch((err) => {
         console.log();
@@ -193,6 +195,8 @@ res.json(response)
 //  res.redirect('/CartPage')
 
 }).catch(()=>{
+  const error = "Stock limit Exceeded";
+      res.status(400).json({ error: error }); // send 400 Bad Request with custom error message
 
 })
 },
@@ -200,7 +204,7 @@ removeCartItem(req,res,next){
 console.log(req.body);
 
 
-removeCartItems(req.body).then((response)=>{
+removeCartItems(req.body,req.session.users._id).then((response)=>{
 
 res.json(response)
 
@@ -242,14 +246,30 @@ placeOrder(req,res){
         Total = parseInt(req.body.offerPrice);
       }
   PlaceOrdered(req.body,products,Total).then((orderID)=>{
+    function destruct(products) { 
+      let data =[]
+      for(let i=0;i<products.length;i++){
+        let obj ={}  
+        obj.prod= products[i].item
+        obj.quantity= products[i].quantity
+        data.push(obj)
+      }
+      return data
+    }
     let order=orderID
     if(req.body.payment_method=='COD'){
+      let ids = destruct(products)
+      console.log(ids,"ids");
 
+      console.log(`this is the idss :: ${ids}`);
+      removeCartAfterOrder(ids,req.body.userID)
       res.json({codSuccess:true})
     }else if(req.body.payment_method=='RAZORPAY'){
 
       generateRazorpay(orderID,Total).then((response)=>{
         console.log(response,">>>>>>>>");
+        let ids = destruct(products)
+        removeCartAfterOrder(ids,req.body.userID)
         res.json({status:"razorpay",response})
 
       })
@@ -276,6 +296,7 @@ placeOrder(req,res){
 
 
       paypal.payment.create(create_payment_json, function (error, payment) {
+        console.log(create_payment_json);
         if (error) {
           console.log(error.response);
           throw error;
@@ -294,7 +315,11 @@ placeOrder(req,res){
       });
       console.log(order,"???????????????????????????????????????????");
       changePaymentStatus(order).then(()=>{
+        let ids = destruct(products)
+  
+        removeCartAfterOrder(ids,req.body.userID).then(()=>{
 
+      })
       })
     }
 

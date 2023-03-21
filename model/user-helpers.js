@@ -249,7 +249,13 @@ changeProductQuantity:(cartDetails)=>{
     cartDetails.count=parseInt(cartDetails.count)
      cartDetails.quantity=parseInt(cartDetails.quantity)
    
-    return new Promise((resolve,reject)=>{
+    return new Promise(async(resolve,reject)=>{
+        let stock= await db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:ObjectId(cartDetails.products)})
+        stock=stock.StockCount
+        if(stock<(cartDetails.quantity +cartDetails.count)){
+            console.log("entered reject");
+            return   reject()
+        }
         
         if(cartDetails.count==-1 && cartDetails.quantity==1){
             
@@ -421,7 +427,7 @@ PlaceOrdered:(order,products,Total)=>{
       console.log(orderObj);
       db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
          
-         db.get().collection(collection.CART_COLLECTION).deleteOne({users:ObjectId(order.userID)})
+        //  db.get().collection(collection.CART_COLLECTION).deleteOne({users:ObjectId(order.userID)})
         
            resolve(response.insertedId)
       })
@@ -446,8 +452,10 @@ PlaceOrdered:(order,products,Total)=>{
 
      return new Promise(async(resolve,reject)=>{
 
-        let OrderDetails= await db.get().collection(collection.ORDER_COLLECTION).find({userID:ObjectId(userID)}).toArray()
-
+        let OrderDetails = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
+            { $match: { userID: ObjectId(userID) } },
+            { $sort: { date: -1 } }
+        ]).toArray();
         resolve(OrderDetails)
      })
  },
@@ -961,5 +969,39 @@ getPriceFilter: (min, max) => {
       }
     });
   },
+  removeCartAfterOrder:(item,userID)=>{
 
+    console.log("this is cart",item);
+    
+    return new Promise(async(resolve,reject)=>{
+    
+    for(let i=0;i<item.length;i++){
+    
+        // item[i].quantity=Number(item[i].quantity)
+    
+        await db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:item[i].prod},{
+    
+            $inc:{StockCount:-item[i].quantity}
+        })
+    
+       await db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:item[i].prod},[{
+    
+       $set:{available:{$cond:{if:{$lt:["$StockCount",1]},then:false,else:true}}},  
+        
+       }]).then(()=>{
+    
+        db.get().collection(collection.CART_COLLECTION).deleteOne({users:ObjectId(userID)})
+    
+        console.log("delte cart");
+    
+        resolve()
+    
+       }).catch((error)=>{
+    
+        reject()
+       })
+    }
+    
+    })
+    },
 }   
