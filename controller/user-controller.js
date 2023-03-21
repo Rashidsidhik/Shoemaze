@@ -280,7 +280,7 @@ placeOrder(req,res){
           "payment_method": "paypal"
         },
         "redirect_urls": {
-          "return_url": "http://localhost:3000/OrderDetails",
+          "return_url": "https://walk-in-style.site/vieworder",
           "cancel_url": "http://cancel.url"
         },
         "transactions": [{
