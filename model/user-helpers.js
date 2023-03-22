@@ -470,7 +470,7 @@ PlaceOrdered:(order,products,Total)=>{
          db.get().collection(collection.ORDER_COLLECTION).updateOne({_id:ObjectId(orderID)},{
 
              $set:{
- 
+                btn:false ,
                  status:status
              }
           }).then((response)=>{

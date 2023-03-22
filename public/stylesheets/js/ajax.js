@@ -220,7 +220,7 @@ function wishlistAlert() {
     const DNDALERT = new DNDAlert({
       title: 'Alert',
       message:
-          'One Item removed From WISHLIST',
+          'One Item Removed from WISHLIST',
       type: 'success',
       html: false,
       
@@ -245,5 +245,4 @@ function wishlistAlert() {
       sourceControlWarning: true,
   
     });
-  
-}
+  }

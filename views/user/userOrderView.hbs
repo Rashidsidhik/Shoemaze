@@ -33,10 +33,10 @@
             <td>{{this.deliveryDetails.postcode}}</td>
 
             <td>
-               {{#if return}}
+               {{#if this.return}}
               <a href="/return-order/{{this._id}}"><button type="submit" class="badge bg-danger" style="border: none;">RETURN</button></a>
               {{/if}}
-              {{#if btn}}
+              {{#if this.btn}}
                 <form action="/orderCancel/{{this._id}}" method="post">
 
                 <input name="status" value="{{ this.status }}" hidden> 

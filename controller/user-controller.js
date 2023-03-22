@@ -628,7 +628,7 @@ returnOrder: (req, res) => {
         console.log(ids,"ids");
 
       stockIncreamentAfterReturn(ids).then(()=>{
-      res.render('user/UserOrderView',{user:true,OrderDetails,usere})
+      res.render('user/userOrderView',{user:true,OrderDetails,usere})
     })
   })
 })
