@@ -1,4 +1,4 @@
-const { doadminLoged ,blockUser ,unblockUser,OrderDetails,OrderCancelled,viewSingleOrder,orderShipped,orderdelivered,getSalesReport,filterSale,getAllusersdashboard,admindashboardChart,YearRevenue,WeekRevenue,TotalSales,TodayOrders,ThisWeekOrders,ThisMonthOrders,ThisYearOrders,TotalRevenues,TodayRevenue,getAllCoupons,getAllStocks,createCoupon,editCoupon,editCouponSubmit,romoveCoupon} = require('../model/admin-helpers');
+const { doadminLoged ,blockUser ,unblockUser,OrderDetails,OrderCancelled,viewSingleOrder,orderShipped,orderdelivered,getSalesReport,filterSale,getAllusersdashboard,admindashboardChart,YearRevenue,WeekRevenue,TotalSales,TodayOrders,ThisWeekOrders,ThisMonthOrders,ThisYearOrders,TotalRevenues,TodayRevenue,getAllCoupons,getAllStocks,createCoupon,editCoupon,editCouponSubmit,romoveCoupon,stockIncreamentAfterReturn,orderProductList} = require('../model/admin-helpers');
 const { getAllUser } = require('../model/user-helpers');
 var productHelpers = require('../model/product-helpers');
 const { response } = require('express');
@@ -256,9 +256,29 @@ console.log(req.params.id);
       adminOrderCancel(req,res){
     
         OrderCancelled(req.params.id,req.body.status).then(()=>{
+          orderProductList(req.params.id).then((products)=>{
+
+            console.log(products,"products coming");
+      
+            function destruct(products) { 
+              let data =[]
+              for(let i=0;i<products.length;i++){
+                let obj ={}  
+                obj.prod= products[i].item
+                obj.quantity= products[i].quantity
+                data.push(obj)
+              }
+              return data
+            }
+            let ids = destruct(products)
+            console.log(ids,"ids");
+      
+          stockIncreamentAfterReturn(ids).then(()=>{
       
                res.redirect('/admin/orders')
         })
+      })
+    })
       },
       viewOrderProduct(req, res) {
         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");

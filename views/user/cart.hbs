@@ -198,13 +198,17 @@
                                     <td>{{this.products.brand}}</td>
                                     <td>{{this.products.price}}</td>
                                   
-                                    <td><div class="viewcontent__action single_action pt-30">
+                                    <td>{{#if this.products.available}}
+                                        <div class="viewcontent__action single_action pt-30">
                                         <!-- <span><input type="number" placeholder="<%= product.quantity %>"></span> -->
                                         <button class="quantitys btn btn-dark" onclick="changeQuantity('{{this._id}}','{{this.products._id}}',-1)">-</button>
                                          <span id="{{this.products._id}}">{{this.quantity}}</span>
                                         <button class="quantity btn btn-dark" onclick="changeQuantity('{{this._id}}','{{this.products._id}}',1)">+</button>
                                         <span id="error" style="color: red;"></span>
-                                    </div></td>
+                                    </div>{{else}}
+                                     <p class="h5 text-danger">Sorry, this product is currently out of stock PLEASE REMOVE</p>
+                                    {{/if}}
+                                    </td>
                                      {{!-- <td></td> --}}
                                     <td class="width-set">
                                         <button class="quantity btn btn-danger" onclick="removeCartItem('{{this._id}}','{{this.products._id}}')">Remove</button>

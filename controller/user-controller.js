@@ -1,4 +1,4 @@
-const { doSignup, doLogin,findByNumber,addToCart,getAllCartProducts,getCartTotalAmount,changeProductQuantity,removeCartItems,getproductList,PlaceOrdered,generateRazorpay,OrderDetails,verifypayments,changePaymentStatus,OrderCancelled,orderProductView,passchanging, addAditionalAddress,getUserAddress,findOrderAddress,editAddress,getUserDetails,deleteAddress,returningOrder,couponManage,getAllCoupons,UserWishlist,getAllWishlist,removeWishlistItems,getSearchProduct,searchResults,getPriceFilter,removeCartAfterOrder} = require("../model/user-helpers")
+const { doSignup, doLogin,findByNumber,addToCart,getAllCartProducts,getCartTotalAmount,changeProductQuantity,removeCartItems,getproductList,PlaceOrdered,generateRazorpay,OrderDetails,verifypayments,changePaymentStatus,OrderCancelled,orderProductView,passchanging, addAditionalAddress,getUserAddress,findOrderAddress,editAddress,getUserDetails,deleteAddress,returningOrder,couponManage,getAllCoupons,UserWishlist,getAllWishlist,removeWishlistItems,getSearchProduct,searchResults,getPriceFilter,removeCartAfterOrder,orderProductList,stockIncreamentAfterReturn} = require("../model/user-helpers")
 var productHelpers = require('../model/product-helpers')
 const{getTotalPrice} =require('../utils/getcart')
 require('dotenv').config()
@@ -280,7 +280,7 @@ placeOrder(req,res){
           "payment_method": "paypal"
         },
         "redirect_urls": {
-          "return_url": "https://walk-in-style.site/vieworder",
+          "return_url": "https://walk-in-style.site/orderDetails",
           "cancel_url": "http://cancel.url"
         },
         "transactions": [{
@@ -402,9 +402,28 @@ userOrderView(req,res){
 OrderCancel(req,res){
 
   OrderCancelled(req.params.id,req.body.status).then(()=>{
+    orderProductList(req.params.id).then((products)=>{
 
+      console.log(products,"products coming");
+
+      function destruct(products) { 
+        let data =[]
+        for(let i=0;i<products.length;i++){
+          let obj ={}  
+          obj.prod= products[i].item
+          obj.quantity= products[i].quantity
+          data.push(obj)
+        }
+        return data
+      }
+      let ids = destruct(products)
+      console.log(ids,"ids");
+
+    stockIncreamentAfterReturn(ids).then(()=>{
          res.redirect('/vieworder')
   })
+})
+})
 },
 userProductView(req,res){
        
@@ -591,9 +610,28 @@ returnOrder: (req, res) => {
   returningOrder(req.params.id).then(() => {
     let usere=req.session.users
     OrderDetails(req.session.users._id).then((OrderDetails)=>{
+      orderProductList(req.params.id).then((products)=>{
+
+        console.log(products,"products coming");
   
+        function destruct(products) { 
+          let data =[]
+          for(let i=0;i<products.length;i++){
+            let obj ={}  
+            obj.prod= products[i].item
+            obj.quantity= products[i].quantity
+            data.push(obj)
+          }
+          return data
+        }
+        let ids = destruct(products)
+        console.log(ids,"ids");
+
+      stockIncreamentAfterReturn(ids).then(()=>{
       res.render('user/UserOrderView',{user:true,OrderDetails,usere})
     })
+  })
+})
   })
 },
 getOffers(req, res) {

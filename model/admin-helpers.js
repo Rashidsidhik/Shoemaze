@@ -882,6 +882,53 @@ module.exports={
         });
       },   
 
+      orderProductList:(orderID)=>{
+        
+        console.log(orderID,"))))))))))))))))))))))))))))");
+        return new Promise(async(resolve,reject)=>{
+          
+    
+            let order= await db.get().collection(collection.ORDER_COLLECTION).findOne({_id:ObjectId(orderID)})
+             
+            resolve(order.products)
+    
+         }).catch(()=>{
+    
+            reject()
+         })
+    
+      },
+      stockIncreamentAfterReturn:(item)=>{
 
+        console.log("this is order",item);
+    
+        return new Promise(async(resolve,reject)=>{
+    
+            for(let i=0;i<item.length;i++){
+    
+                // item[i].quantity=Number(item[i].quantity)
+            
+                await db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:item[i].prod},{
+            
+                    $inc:{StockCount:+item[i].quantity}
+                })
+            
+               await db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:item[i].prod},[{
+            
+               $set:{available:{$cond:{if:{$gt:["$StockCount",0]},then:true,else:false}}},  
+                
+               }]).then(()=>{
+            
+                resolve()
+            
+               }).catch((error)=>{
+            
+                reject()
+               })
+            }
+    
+    
+        })
+      },
 }
       
