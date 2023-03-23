@@ -662,7 +662,8 @@ async checkCoupon(req, res) {
 },
 categoryfilter(req,res){
 
-  let users=req.session.user
+  let usere=req.session.users
+  let users=req.session.users
   let name=req.body;
 
   console.log(users);
@@ -672,12 +673,12 @@ categoryfilter(req,res){
     console.log(">>>>>>>>>>",products);
     productHelpers.getAllcategory().then((getcategory)=>{
     
-      res.render('user/view-products',{user:true,products,users,getcategory})
+      res.render('user/view-products',{user:true,products,usere,users,getcategory})
 
 
     }).catch(()=>{
 
-      res.render('user/view-products',{user:true,products,users,getcategory})
+      res.render('user/view-products',{user:true,products,users,usere,getcategory})
     })
    
   })
