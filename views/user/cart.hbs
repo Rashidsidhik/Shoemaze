@@ -248,7 +248,15 @@
                           </tr>
                           <tr>   
                               <td colspan="2">
-                                  <a href="/proceedToCheckout"><input type="submit" value="procced to checkout"></a>
+                                 {{#if products.outofStock}}
+                                  <li>
+                                    <button 
+                                        class="btn btn-animation proceed-btn fw-bold">Some Products Unavailable</button>
+                                </li>
+                                 
+                                  {{else}}
+                                 <a href="/proceedToCheckout"><input type="submit" value="procced to checkout"></a>
+                                   {{/if}}
                               </td>
                           </tr>
                       </table>

@@ -177,7 +177,22 @@ getAllCartProducts:(userID)=>{
              }
 
         ]).toArray()
+        if(cartItems){
+            let outofStock= false
+            console.log("workingggg");
+            for(let i=0;i<cartItems.length;i++){
+                console.log(cartItems.length);
+                console.log(cartItems[i].products.available,"<<<<<<<<<");
+                if(cartItems[i].products.available==false){
+                    console.log("hereeeere");
+                    outofStock=true
+                }
+            }
+            cartItems.outofStock=outofStock;
+        }
         
+            console.log(cartItems.outofStock);
+            console.log(cartItems);
         resolve(cartItems)
     }).catch(()=>{
 
