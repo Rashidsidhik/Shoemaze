@@ -211,6 +211,7 @@
 
 <script>
 function validateForm() {
+  if (document.getElementById('normal-1').style.display === 'flex') {
   var currentDate = new Date();
   var startDate = document.getElementById("startDate").value;
   var endDate = document.getElementById("endDate").value;
@@ -247,6 +248,23 @@ currentDate = year + "-" + month + "-" + day;
     return false;
   }
   return true;
+  } else if (document.getElementById('category').style.display === 'flex') {
+      var currentDate = new Date();
+  var startDate = document.getElementById("startDate").value;
+  var endDate = document.getElementById("endDate").value;
+ var year = currentDate.getFullYear();
+var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+var day = currentDate.getDate().toString().padStart(2, "0");
+currentDate = year + "-" + month + "-" + day;
+ var couponcode = document.getElementById("id").value;
+  var couponname = document.getElementById("inputText").value;
+   var purchaselimit = document.getElementById("purchaselimit").value;
+   if (currentDate > endDate) {
+    alert("end date must be greater than or equal to current date");
+    return false;
+  
+  }
+  }
 }
 </script>
 <script>
