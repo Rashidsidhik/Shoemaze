@@ -203,7 +203,7 @@
                                     <td class="width-set">
                                         {{#if this.products.available}}
                                         <button class="quantity btn btn-danger" onclick="removeWishlistItem('{{this._id }}','{{this.products._id}}')">Remove</button>
-                                         <button class="quantity btn btn-danger" onclick="addtocart('{{this._id}}')">Add cart</button>
+                                         <button class="quantity btn btn-danger" onclick="addtocart('{{this.products._id}}')">Add cart</button>
                                     {{else}}
                                                 <p class="h5 text-danger">Sorry, this product is currently out of stock</p>
                                                  <button class="quantity btn btn-danger" onclick="removeWishlistItem('{{this._id }}','{{this.products._id}}')">Remove</button>
@@ -313,7 +313,7 @@ url:'/remove_wishlistItem',
 
    }
   function addtocart(proID){
-        cartAlert()
+        
      console.log("}}}}}}}}}}}}}}}}}}}}");
       $.ajax({
 
