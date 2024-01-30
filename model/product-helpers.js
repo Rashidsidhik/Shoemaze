@@ -98,9 +98,7 @@ console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
         db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:ObjectId(deleteid)},
         {
 
-            $set:{
-                available:false
-         },
+            $set:{available:{$cond:{if:{$gt:["$StockCount",0]},then:true,else:false}}}, 
         }).then((response)=>{
 
             resolve(response)
