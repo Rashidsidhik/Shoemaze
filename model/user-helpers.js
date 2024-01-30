@@ -1001,7 +1001,7 @@ getPriceFilter: (min, max) => {
     
        await db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:item[i].prod},[{
     
-       $set:{available:{$cond:{if:{$lt:["$StockCount",0]},then:true,else:false}}},  
+       $set:{available:{$cond:{if:{$gt:["$StockCount",0]},then:true,else:false}}},  
         
        }]).then(()=>{
     

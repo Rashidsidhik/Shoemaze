@@ -376,14 +376,16 @@ console.log(response,'ddddddddddddddddd')
                 // alert(response)
             },
             error: function(xhr, status, error) {
-                console.log(error);
+                console.log(error,"577");
 if (xhr.status === 400 && xhr.responseJSON && xhr.responseJSON.error === "Stock limit Exceeded") {
- Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Stock limit Exceeded!',
-  footer: '<a href="">SORRY</a>'
-})
+     console.log(error,"57755");
+Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Stock limit Exceeded!',
+    footer: '<a href="">SORRY</a>'
+});
+
     // Set a timer to clear the error message after 5 seconds
    
 } else {
