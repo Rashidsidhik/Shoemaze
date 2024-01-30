@@ -646,7 +646,7 @@ generateRazorpay:(orderID,Total)=>{
 
     var crypto = require('crypto');
 
-    var hmac = crypto.createHmac('sha256', 'xslbBw99lI0wSbcbW3c2oUkJ');
+    var hmac = crypto.createHmac('sha256', 'oij0aUWfYtddsl8PJGyHRyCu');
 
     hmac.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
     hmac=hmac.digest('hex')
