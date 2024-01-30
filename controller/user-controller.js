@@ -280,7 +280,7 @@ placeOrder(req,res){
           "payment_method": "paypal"
         },
         "redirect_urls": {
-          "return_url": "https://walk-in-style.site/orderDetails",
+          "return_url": "https://ecommerce.fonokart.shop/orderDetails",
           "cancel_url": "http://cancel.url"
         },
         "transactions": [{
